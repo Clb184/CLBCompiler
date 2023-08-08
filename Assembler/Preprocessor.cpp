@@ -4,9 +4,8 @@
 bool Preprocessor::initPreprocessor(std::vector<AsmToken>& tokArray, ScriptFileHeader& Header, std::string fileName) {
 	this->m_IncludedFiles.insert({fileName, true});
 	bool onError = false;
-	const size_t size = tokArray.size();
 	try {
-		for (int i = 0; i < size && !onError; i++) {
+		for (size_t i = 0; i < tokArray.size() && !onError; i++) {
 			int line = tokArray[i].line;
 			//if (line == 231)
 			//	std::cout << "Check this out!";
@@ -112,7 +111,7 @@ bool Preprocessor::initPreprocessor(std::vector<AsmToken>& tokArray, ScriptFileH
 					tokArray[i].tok = ASMTOKEN::IGNORE2;
 					//Something like #define, done!
 					i++;
-					if (i + 1 < size &&
+					if (i + 1 < tokArray.size() &&
 						tokArray[i].tok == ASMTOKEN::IDENTIFIER2 &&
 						(tokArray[i + 1].tok == ASMTOKEN::INT_LIT2 ||
 							tokArray[i + 1].tok == ASMTOKEN::REAL_LIT2)) {
@@ -133,7 +132,7 @@ bool Preprocessor::initPreprocessor(std::vector<AsmToken>& tokArray, ScriptFileH
 				case ASMPREPROCESOR::ASM_MUSIC: {
 					tokArray[i].tok = ASMTOKEN::IGNORE2;
 					i++;
-					while (i + 3 < size &&
+					while (i + 3 < tokArray.size() &&
 						tokArray[i].tok == ASMTOKEN::STRING_LIT2 &&
 						tokArray[i + 1].tok == ASMTOKEN::INT_LIT2 &&
 						tokArray[i + 2].tok == ASMTOKEN::INT_LIT2) {
@@ -167,7 +166,7 @@ bool Preprocessor::initPreprocessor(std::vector<AsmToken>& tokArray, ScriptFileH
 					tokArray[i].tok = ASMTOKEN::IGNORE2;
 					int kind = (int)tokArray[i].numval;
 					i++;
-					if (i + 2 < size &&
+					if (i + 2 < tokArray.size() &&
 						tokArray[i].tok == ASMTOKEN::STRING_LIT2 &&
 						tokArray[i + 1].tok == ASMTOKEN::STRING_LIT2 &&
 						tokArray[i + 2].val == ";") {
@@ -197,7 +196,7 @@ bool Preprocessor::initPreprocessor(std::vector<AsmToken>& tokArray, ScriptFileH
 					tokArray[i].tok = ASMTOKEN::IGNORE2;
 					int kind = (int)tokArray[i].numval;
 					i++;
-					while (i + 1 < size) {
+					while (i + 1 < tokArray.size()) {
 						if (tokArray[i].tok == ASMTOKEN::STRING_LIT2) {
 							if (kind == ASMPREPROCESOR::ASM_QUAD)
 								Header.quad.quadArr.push_back(tokArray[i].val);
@@ -238,12 +237,12 @@ bool Preprocessor::initPreprocessor(std::vector<AsmToken>& tokArray, ScriptFileH
 						Header.sndm.size = Header.sndm.soundArr.size();
 				}break;
 				case ASMPREPROCESOR::ASM_IMPORT: {
-					if (i + 1 < size && tokArray[i + 1].tok == ASMTOKEN::STRING_LIT2) {
+					if (i + 1 < tokArray.size() && tokArray[i + 1].tok == ASMTOKEN::STRING_LIT2) {
 						tokArray[i].tok = ASMTOKEN::IGNORE2;
 						tokArray[i + 1].tok = ASMTOKEN::IGNORE2;
 						std::string includedFile = this->retrievePath(fileName, tokArray[i + 1].val);
 						if (this->m_IncludedFiles.find(includedFile) == this->m_IncludedFiles.end()) {
-							if (!this->appendImport(includedFile, i + 2, tokArray, Header)) {
+							if (!this->appendImport(includedFile, i, tokArray, Header)) {
 								onError = true;
 								break;
 							}
@@ -263,7 +262,7 @@ bool Preprocessor::initPreprocessor(std::vector<AsmToken>& tokArray, ScriptFileH
 	return !onError;
 }
 
-bool Preprocessor::appendImport(std::string incName, size_t pos, std::vector<AsmToken>& tokArray, ScriptFileHeader& Header) {
+bool Preprocessor::appendImport(std::string incName, size_t& pos, std::vector<AsmToken>& tokArray, ScriptFileHeader& Header) {
 	Lexer includer; 
 	std::vector<AsmToken> includerTokens;
 
@@ -272,7 +271,8 @@ bool Preprocessor::appendImport(std::string incName, size_t pos, std::vector<Asm
 		includer.initValues();
 		includerTokens = includer.getTokens();
 		if (this->initPreprocessor(includerTokens, Header, incName)) {
-			tokArray.insert(tokArray.begin() + pos, includerTokens.begin(), includerTokens.end());
+			tokArray.insert(tokArray.begin() + pos + 2, includerTokens.begin(), includerTokens.end());
+			pos += includerTokens.size();
 			return true;
 		}
 		return false;
