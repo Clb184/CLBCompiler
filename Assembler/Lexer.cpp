@@ -157,10 +157,11 @@ void Lexer::Initialize(std::string input) {
 
 	TextFile src;
 
-	if (src.loadFile(input)) {
-		this->m_Input = input;
-		this->m_Src = src.m_DataStr;
-	}
+	this->m_Input = input;
+	//if (src.loadFile(input)) {
+	//	this->m_Input = input;
+	//	//this->m_Src = src.m_DataStr;
+	//}
 }
 
 bool Lexer::tokenizeSrc() {
@@ -173,28 +174,33 @@ bool Lexer::tokenizeSrc() {
 	std::string src;
 	std::ifstream input;
 	input.open(this->m_Input, std::ios::in);
-	bool cont = true;
-	try {
-		AsmToken get;
-		while (getline(input, src) && cont) {
-			do {
-				get = this->tokenizeItem(src, line);
-				if (cont = get.tok != ASMTOKEN::UNKNOWN2) {
-					if (get.tok != ASMTOKEN::IGNORE2)
-						this->m_TokenArr.push_back(get);
-				}
-				else
-					throw get;
-			} while (cont && src.size());
-			line++;
+	if (input.is_open()) {
+		bool cont = true;
+		try {
+			AsmToken get;
+			while (getline(input, src) && cont) {
+				do {
+					get = this->tokenizeItem(src, line);
+					if (cont = get.tok != ASMTOKEN::UNKNOWN2) {
+						if (get.tok != ASMTOKEN::IGNORE2)
+							this->m_TokenArr.push_back(get);
+					}
+					else
+						throw get;
+				} while (cont && src.size());
+				line++;
+			}
 		}
+		catch (AsmToken except) {
+			std::cerr << "Lexer::tokenizeSrc() > Unrecognized token: '" << except.val << "' in line " << except.line << ".\n";
+			return false;
+		}
+		return true;
 	}
-	catch (AsmToken except) {
-		std::cout << "Unrecognized token: '" << except.val << "' in line " << except.line << ".\n";
-		//return std::vector<AsmToken>();
+	else {
+		std::cerr << "Lexer::tokenizeSrc() > Failed to open \"" << this->m_Input << "\".\n";
 		return false;
 	}
-	return true;
 }
 
 AsmToken Lexer::tokenizeItem(std::string& params, size_t line) {

@@ -1,4 +1,5 @@
 #include "Parser.h"
+#include "Preprocessor.h"
 
 Parser::Parser() {
 	this->m_offsetEx = 0;
@@ -11,11 +12,12 @@ void Parser::Initialize(const std::string& in) {
 
 bool Parser::parseTokens() {
 	size_t pos = 0;
+	Preprocessor preprocessor;
 	bool onError = false;
 	if (this->m_Lexer.tokenizeSrc()) {
 		this->m_Lexer.initValues();
 		this->m_TokArr = this->m_Lexer.getTokens();
-		if (this->calcAddresses()) {
+		if (!(onError = !preprocessor.initPreprocessor(this->m_TokArr, this->m_FileHeader, this->m_InName)) && this->calcAddresses()) {
 			const size_t size = this->m_TokArr.size();
 			try {
 				for (size_t i = 0; i < size && !onError; ) {
@@ -70,16 +72,7 @@ bool Parser::parseTokens() {
 							case ScriptCommand::MOVV:
 							case ScriptCommand::MOVCE:
 							case ScriptCommand::MOVCCN:
-								if (this->m_TokArr[i].tok == ASMTOKEN::IDENTIFIER2) {
-									if (this->m_DefinedTokenMap.find(this->m_TokArr[i].val) != this->m_DefinedTokenMap.end())
-										this->m_NumArray.push_back(this->m_DefinedTokenMap[this->m_TokArr[i].val].numval);
-									else {
-										throw this->m_TokArr[i];
-										onError = true;
-										break;
-									}
-								}
-								else if (this->m_TokArr[i].tok == ASMTOKEN::INT_LIT2) {
+								if (this->m_TokArr[i].tok == ASMTOKEN::INT_LIT2) {
 									this->m_NumArray.push_back(this->m_TokArr[i].numval);
 								}
 								else {
@@ -105,25 +98,6 @@ bool Parser::parseTokens() {
 							case ScriptCommand::VARALLOC:
 							case ScriptCommand::PUSHSTR:
 								switch (this->m_TokArr[i].tok) {
-								case ASMTOKEN::IDENTIFIER2:
-									if (this->m_DefinedTokenMap.find(this->m_TokArr[i].val) != this->m_DefinedTokenMap.end())
-										this->m_NumArray.push_back(this->m_DefinedTokenMap[this->m_TokArr[i].val].numval);
-									else {
-										throw this->m_TokArr[i];
-										onError = true;
-									}
-									break;
-								case ASMTOKEN::RAD2:
-									if (i + 1 < size)
-										i++;
-									else
-										break;
-									switch (this->m_TokArr[i].tok) {
-									case ASMTOKEN::INT_LIT2:
-										this->m_TokArr[i].numval = (float)(int)this->m_TokArr[i].numval;
-									case ASMTOKEN::REAL_LIT2:
-										this->m_TokArr[i].numval = (PI * (double)(float)this->m_TokArr[i].numval) / 180.0;
-									}
 								case ASMTOKEN::INT_LIT2:
 								case ASMTOKEN::REAL_LIT2:
 									this->m_NumArray.push_back(this->m_TokArr[i].numval);
@@ -138,7 +112,7 @@ bool Parser::parseTokens() {
 								break;
 							}
 						}
-					}break;
+					}break;/*
 					case ASMTOKEN::PREPROCESSOR2: {
 						switch ((int)this->m_TokArr[i].numval) {
 						case ASMPREPROCESOR::ASM_CONSTANT:
@@ -247,7 +221,10 @@ bool Parser::parseTokens() {
 								this->m_FileHeader.sndm.size = this->m_FileHeader.sndm.soundArr.size();
 						}break;
 						}
-					}break;
+					}break;*/
+					case ASMTOKEN::IGNORE2:
+						i++;
+						break;
 					default:
 						throw this->m_TokArr[i];
 						onError = true;
@@ -257,15 +234,19 @@ bool Parser::parseTokens() {
 			}
 			catch (AsmToken tok) {
 				std::cerr << "Parser::ParseTokens() > Error in line " << tok.line << ": " << tok.val << "\n";
+				return false;
 			}
 		}
 	}
 	else {
 		std::cout << "Couldn't tokenize source.\n";
+		return false;
 	}
+	return !onError;
 }
 
 bool Parser::calcAddresses() {
+	this->clearIgnoredTokens();
 	const size_t size = this->m_TokArr.size();
 	size_t pos = 0;
 	bool onError = false;
@@ -341,6 +322,15 @@ bool Parser::calcAddresses() {
 		return false;
 	}
 	return true;
+}
+
+void Parser::clearIgnoredTokens() {
+	for (int i = 0; i < this->m_TokArr.size(); ) {
+		if (this->m_TokArr[i].tok == ASMTOKEN::IGNORE2)
+			this->m_TokArr.erase(this->m_TokArr.begin() + i);
+		else
+			i++;
+	}
 }
 
 ScriptFileHeader Parser::getScriptHeader() {

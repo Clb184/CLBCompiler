@@ -54,10 +54,11 @@ public:
 	std::vector<constant> getNumArray();
 private:
 	bool calcAddresses();
+	void clearIgnoredTokens();
+private:
 	Lexer m_Lexer;
 	std::string m_InName;
 	std::map<std::string, uint32_t> m_AddressMap;
-	std::map<std::string, AsmToken> m_DefinedTokenMap;
 	std::vector<AsmToken> m_TokArr;
 	std::vector<constant> m_NumArray;
 	ScriptFileHeader m_FileHeader;

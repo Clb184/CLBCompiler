@@ -23,8 +23,8 @@ void Compiler::compileFile() {
 		std::memset(pBuffer, 0x00, size);
 		this->writeBuffer(pBuffer);
 		pFile = std::fopen(this->m_OutName.c_str(), "wb");
-		fwrite(pBuffer, size, 1, pFile);
-		fclose(pFile);
+		std::fwrite(pBuffer, size, 1, pFile);
+		std::fclose(pFile);
 		std::free(pBuffer);
 	}
 }
