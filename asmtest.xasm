@@ -1,0 +1,1467 @@
+sound "resource/LE/sub_event_00.wav", 
+		"resource/LE/sub_event_01.wav", 
+		"resource/LE/sub_event_02.wav", 
+		"resource/LE/sub_event_03.wav", 
+		"resource/LE/slot_00.wav", 
+		"resource/LE/slot_01.wav", 
+		"resource/LE/cell_move_00.wav",
+		"resource/shot5.wav";
+		
+music "resource/BOSS_Xeno_a.ogg" 0 1000000000,
+		"resource/bgm/exboss_2.ogg" 0 1000000000;
+	
+model "test_tsurubami_bg.obj";
+
+quad "resource/sprite_src/pl_Tsurubami.spr", 
+		"resource/sprite_src/bullet_smd.spr", 
+		"resource/sprite_src/boss_vivit0.spr", 
+		"resource/sprite_src/boss_vivit1.spr", 
+		"resource/sprite_src/bg_sun00.spr", 
+		"resource/sprite_src/bg_sun01.spr", 
+		"resource/sprite_src/bg_sun_ray.spr",
+		"resource/sprite_src/bg_stage.spr";
+
+const SLOT_TSURUBAMI 			0
+const SLOT_BULLET				1
+const SLOT_VIVIT_1				2
+const SLOT_VIVIT_2				3
+const SLOT_BG_SUN_00			4
+const SLOT_BG_SUN_01			5
+const SLOT_BG_SUN_RAY			6
+const SLOT_BG_STAGE				7
+
+const TSURUBAMI_SENRI_EYE 		4
+const TSURUBAMI_BULLET_CARD	 	5
+const TSURUBAMI_BULLET_INK	 	6
+
+const VIV_IDLE_NORM				0
+const VIV_IDLE_FLIPPED			3
+const VIV_IDLE_FRAMES			3
+
+const VIV_MOVE_RIGHT			8
+const VIV_MOVE_LEFT				11
+
+
+const BULLET_ARROW_BLUE			0
+const BULLET_ARROW_CYAN			1
+const BULLET_ARROW_GREEN		2
+const BULLET_ARROW_YELLOW		3
+const BULLET_ARROW_ORANGE		4
+const BULLET_ARROW_GREY			5
+
+const BG_SUN00					0
+const BG_SUN01					0
+const BG_SUN_RAY				0
+const BG_STAGE					0
+
+
+
+shader2d "resource/shaders/def_2.vert" "resource/shaders/def_2.frag";
+shader3d "resource/shaders/def_3d.vert" "resource/shaders/def_3d.frag";
+
+string "Hello ", "Everynyan! ", "How are you? I'm fine, thank you!", "Angle: ";
+
+
+const RET_CLOSE				0
+const RET_RELOAD			2
+const RET_CHANGE			3
+const RET_KILL 				-2
+
+const SYS_CURRENT_SCRIPT	0
+const SYS_NEXT_SCRIPT		1
+const SYS_INPUT				2
+const SYS_PLAYER_SHOT		3
+const SYS_LIVES				4
+const SYS_BOMBS				5
+const SYS_PLAYER_X			6
+const SYS_PLAYER_Y			7
+
+const SYS_GRI0			 	8
+const SYS_GRI1			 	9
+const SYS_GRI2			 	10
+const SYS_GRI3			 	11
+const SYS_GRI4			 	12
+const SYS_GRI5			 	13
+const SYS_GRI6			 	14
+const SYS_GRI7			 	15
+const SYS_GRI8			 	16
+const SYS_GRI9			 	17
+const SYS_GRI10			 	18
+const SYS_GRI11			 	19
+const SYS_GRI12			 	20
+const SYS_GRI13			 	21
+const SYS_GRI14			 	22
+const SYS_GRI15			 	23
+
+const SYS_GRF0			 	24
+const SYS_GRF1			 	25
+const SYS_GRF2			 	26
+const SYS_GRF3			 	27
+const SYS_GRF4			 	28
+const SYS_GRF5			 	29
+const SYS_GRF6			 	30
+const SYS_GRF7			 	31
+const SYS_GRF8			 	32
+const SYS_GRF9			 	33
+const SYS_GRF10			 	34
+const SYS_GRF11			 	35
+const SYS_GRF12			 	36
+const SYS_GRF13			 	37
+const SYS_GRF14			 	38
+const SYS_GRF15			 	39
+
+const CAMERA_X			 	40
+const CAMERA_Y			 	41
+const CAMERA_Z			 	42
+const CAMERA_PITCH		 	43
+const CAMERA_YAW		 	44
+const CAMERA_ROLL		 	45
+const CAMERA_FOV		 	46
+
+const SYS_SCORE				47
+const SYS_HISCORE			48
+
+const SYS_DAY				49
+const SYS_MONTH				50
+const SYS_YEAR				51
+const SYS_HOUR				52
+const SYS_MINUTE			53
+const SYS_SECOND			54
+
+const GAME_AREA_X			55
+const GAME_AREA_Y			56
+const GAME_AREA_SCALE_X		57
+const GAME_AREA_SCALE_Y		58
+const GAME_AREA_ROT			59
+const GAME_AREA_W			60
+const GAME_AREA_H			61
+const GAME_AREA_OFFSET_U	62
+const GAME_AREA_OFFSET_V	63
+const GAME_AREA_COLOR_R		64
+const GAME_AREA_COLOR_G		65
+const GAME_AREA_COLOR_B		66
+const GAME_AREA_COLOR_A		67
+
+const GL_CLEAR_R			68
+const GL_CLEAR_G			69
+const GL_CLEAR_B			70
+const GL_CLEAR_A			71
+
+
+
+const INPUT_Z				1
+const INPUT_X				2
+const INPUT_SHIFT			4
+const INPUT_ESCAPE			8
+
+const INPUT_UP				16
+const INPUT_DOWN			32
+const INPUT_LEFT			64
+const INPUT_RIGHT			128
+
+
+
+const ENM_X 				0
+const ENM_Y 				1
+const ENM_Z 				2
+const ENM_SPRITE_SCALE_X 	3
+const ENM_SPRITE_SCALE_Y 	4
+const ENM_PITCH 			5
+const ENM_YAW 				6
+const ENM_ROLL 				7
+const ENM_SPRITE_OFFSET_X 	8
+const ENM_SPRITE_OFFSET_Y 	9
+const ENM_TIME			 	10
+const ENM_FLAGS			 	11
+const ENM_LIFE			 	12
+
+const ENM_GRI0			 	13
+const ENM_GRI1			 	14
+const ENM_GRI2			 	15
+const ENM_GRI3			 	16
+const ENM_GRI4			 	17
+const ENM_GRI5			 	18
+const ENM_GRI6			 	19
+const ENM_GRI7			 	20
+const ENM_GRI8			 	21
+const ENM_GRI9			 	22
+const ENM_GRI10			 	23
+const ENM_GRI11			 	24
+const ENM_GRI12			 	25
+const ENM_GRI13			 	26
+const ENM_GRI14			 	27
+const ENM_GRI15			 	28
+
+const ENM_GRF0			 	29
+const ENM_GRF1			 	30
+const ENM_GRF2			 	31
+const ENM_GRF3			 	32
+const ENM_GRF4			 	33
+const ENM_GRF5			 	34
+const ENM_GRF6			 	35
+const ENM_GRF7			 	36
+const ENM_GRF8			 	37
+const ENM_GRF9			 	38
+const ENM_GRF10			 	39
+const ENM_GRF11			 	40
+const ENM_GRF12			 	41
+const ENM_GRF13			 	42
+const ENM_GRF14			 	43
+const ENM_GRF15			 	44
+
+const SP_DRAW_LAYER			45
+const SP_SPRITE_SLOT		46
+const SP_QUAD_ID			47
+const SP_ANCHOR_H			48
+const SP_ANCHOR_V			49
+const SP_DRAWFLAGS			50
+const SP_COL_R				51
+const SP_COL_G				52
+const SP_COL_B				53
+const SP_COL_A				54
+
+const PTR_PARENT			55
+const PTR_CHILD0			56
+const PTR_CHILD1			57
+const PTR_CHILD2			58
+const PTR_CHILD3			59
+const PTR_CHILD4			60
+const PTR_CHILD5			61
+const PTR_CHILD6			62
+const PTR_CHILD7			63
+const PTR_CHILD8			64
+const PTR_CHILD9			65
+const PTR_CHILD10			66
+const PTR_CHILD11			67
+const PTR_CHILD12			68
+const PTR_CHILD13			69
+const PTR_CHILD14			70
+const PTR_CHILD15			71
+
+const HIT_KIND				72
+const HIT_ID				73
+const HIT_RECEIVED_ID		74
+const PTR_HIT_ENEMY			75
+const PTR_ENEMY_NEAREST		76
+const HIT_WIDTH				77
+const HIT_RADIUS			77
+const HIT_HEIGHT			78
+const HIT_RECT_ROT			79
+
+const VEL_X					80
+const VEL_Y					81
+const VEL_Z					82
+const VEL_ACC_X				83
+const VEL_ACC_Y				84
+const VEL_ACC_Z				85
+
+const STR_X					86
+const STR_Y					87
+const STR_SCALE_X			88
+const STR_SCALE_Y			89
+const STR_ROT				90
+const STR_COLOR_R			91
+const STR_COLOR_G			92
+const STR_COLOR_B			93
+const STR_COLOR_A			94
+
+const ANGLE_PLAYER			95
+
+
+
+const EFLAG_HITBOX			1
+const EFLAG_DRAW			2
+const EFLAG_CLIP			4
+const EFLAG_NO_TARGETABLE	8
+const EFLAG_NO_DELETE		64
+const EFLAG_PLAYER			4096
+
+.main
+	movcs 58 1.0
+	pushr 11
+	pushc EFLAG_HITBOX
+	xor
+	pushc EFLAG_NO_TARGETABLE
+	or
+	pushc EFLAG_NO_DELETE
+	or
+	popr 11
+	objcreate background_create 0
+	objcreate player 0
+	movcs 59 0.0
+	pushc 60
+	nop
+	pushc 1
+	playmusic  
+	pushc 1
+	pushc 90.0
+	setvolume
+	objcreate boss_vivit 0
+	objcreate cam_move 0
+.xmain_loop
+	pushr 9
+	pushc 4.0f
+	addf
+	popr 9
+	
+	
+	pushc 1
+	nop
+	jmp xmain_loop
+
+
+.boss_vivit
+	movc SP_DRAW_LAYER		6
+	movc SP_SPRITE_SLOT		SLOT_VIVIT_1
+	movc SP_QUAD_ID			VIV_IDLE_NORM
+	
+	randf
+	pushc 0.0f
+	mulf
+	pushc 320.0f
+	addf
+	popr ENM_X
+	
+	movc ENM_Y -60.0f
+	movc 19 0.0f
+	movc 20 190.f
+	pushr 11
+	pushc 4
+	xor
+	popr 11
+	movc HIT_ID 32
+	movc ENM_LIFE 50000
+.loop2
+	
+	pushc -60.0
+	pushr 19
+	sin
+	pushr 20
+	mulf
+	addf
+	popr ENM_Y
+	
+	pushr 19
+	pushc 3.14159
+	pushc 180.0
+	divf
+	addf
+	popr 19
+	
+	pushc 1
+	nop 
+	
+	pushr 19
+	pushc 3.14159
+	pushc 2.0
+	divf
+	geqf
+	tjmp out1
+	
+	jmp loop2
+.out1
+	int randmov
+	pushc 1
+	createthread viv_animation
+	pushc 1
+	nop
+	jmp out1
+
+.viv_animation
+	call viv_animation_idle
+	call viv_float
+	pushc 1
+	nop
+	jmp viv_animation
+
+.randmov
+	devbreak
+	delint
+	pushc 1
+	createthread viv_animation
+	
+	movc ENM_LIFE 10000
+.rand_begin
+	movc ENM_TIME 0.0
+	pushc 30.0
+	
+	randf
+	pushc 200.0f
+	mulf
+	pushc 400.0f
+	addf
+	
+	randf
+	pushc 100.0f
+	mulf
+	pushc 200.0f
+	addf
+	call move_pos_time_viv
+	movc 30 0.0
+.waiting
+	
+	pushc 1
+	nop
+	movc 13 4
+	pushc 6.28318
+	pushr 13
+	itof
+	divf
+	popr 29
+.loop_bullet0
+	pushr 13
+	pushc 1
+	subi
+	popr 13
+	
+	objcount
+	pushc 1000
+	geqi
+	tjmp skip_bullet_erase_stack
+	
+	pushr 29
+	pushr 13
+	itof
+	mulf
+	pushr 30
+	addf
+	
+	pushc 5.5f
+	pushr 0
+	pushr 1
+	
+	objcreate bullet_003 0
+.skip_bullet_erase_stack
+	pushr 13
+	pushc 0
+	eqi
+	fjmp loop_bullet0
+	
+	pushr 30
+	pushc 3.14159
+	pushc 180.0
+	divf
+	pushc 13.0
+	mulf
+	addf
+	popr 30
+	
+	pushr ENM_TIME
+	ftoi
+	pushc 50
+	mod
+	pushc 0
+	eqi
+	tjmp rand_goto_begin
+	jmp waiting
+.rand_goto_begin
+	pushc 40
+	nop
+	jmp rand_begin
+	
+.viv_float
+	pushr ENM_TIME
+	pushc 0.05
+	mulf
+	sin
+	pushc 1.0
+	mulf
+	pushr ENM_Y
+	addf
+	popr ENM_Y
+	ret
+	
+
+.viv_animation_idle
+	pushr ENM_TIME
+	ftoi
+	pushc 8
+	mod
+	tjmp viv_anim_skip
+	
+	pushr SP_QUAD_ID
+	pushc 1
+	addi
+	pushc VIV_IDLE_FRAMES
+	mod
+	popr SP_QUAD_ID
+.viv_anim_skip
+	ret
+	
+.move_pos_time_viv
+	varalloc 3
+	popv 2
+	popv 1
+	popv 0
+	
+	pushv 0
+	pushc 0.0
+	eqf
+	tjmp final_mov
+	
+	pushv 1
+	pushr ENM_X
+	subf
+	pushv 0
+	divf
+	popv 1
+	
+	pushv 2
+	pushr ENM_Y
+	subf
+	pushv 0
+	divf
+	popv 2
+	
+	pushc 1
+	stopthread
+	
+	pushv 1
+	pushc 0.0
+	leqf
+	tjmp sprite_move_left
+	movc SP_QUAD_ID VIV_MOVE_RIGHT
+	jmp loop_mov_pos
+.sprite_move_left
+	movc SP_QUAD_ID VIV_MOVE_LEFT
+.loop_mov_pos
+	pushv 0
+	pushc 1.0
+	subf
+	popv 0
+	
+	pushv 0
+	pushc 0.0
+	eqf
+	tjmp end_mov_pos
+	
+	pushr ENM_X
+	pushv 1
+	addf
+	popr ENM_X
+	
+	pushr ENM_Y
+	pushv 2
+	addf
+	popr ENM_Y
+	
+	pushc 1
+	nop
+	jmp loop_mov_pos
+.end_mov_pos
+	pushv 1
+	pushc 0.0
+	leqf
+	tjmp sprite_idle_left
+	movc SP_QUAD_ID VIV_IDLE_NORM
+	jmp final_mov
+.sprite_idle_left
+	movc SP_QUAD_ID VIV_IDLE_FLIPPED
+.final_mov
+	pushc 1
+	resumethread
+	vardealloc
+	ret
+
+
+.bullet003_on_hit
+	retc RET_KILL
+
+.bullet_003
+	popr 1
+	popr 0
+	popr 30
+	popr 29
+	
+	movc SP_DRAW_LAYER		7
+	movc SP_SPRITE_SLOT		SLOT_BULLET
+	movc SP_QUAD_ID			BULLET_ARROW_BLUE
+	
+	
+	movc HIT_WIDTH		16.0f
+	movc HIT_HEIGHT		16.0f
+	movc HIT_ID			1
+	int bullet003_on_hit
+.bull_mov0
+	pushr 29
+	pushc -1.57089
+	addf
+	popr ENM_ROLL
+	pushc 1
+	nop
+	
+	pushr 29
+	cos
+	pushr 30
+	mulf
+	pushr 0
+	addf
+	popr 0
+	
+	pushr 29
+	sin
+	pushr 30
+	mulf
+	pushr 1
+	addf
+	popr 1
+	
+	pushr 29
+	pushc 3.14159
+	pushc 180.0
+	divf
+	pushc -0.0
+	mulf
+	addf
+	popr 29
+	
+	jmp bull_mov0
+	
+	
+.ink_bullet_on_hit
+.ink_hit
+
+	pushr PTR_HIT_ENEMY
+	movce SP_COL_R 255
+	pushr PTR_HIT_ENEMY
+	movce SP_COL_G 0
+	pushr PTR_HIT_ENEMY
+	movce SP_COL_B 0
+	
+	pushr PTR_HIT_ENEMY
+	pushe ENM_LIFE
+	pushc 0
+	leqi
+	tjmp ink_no_hit
+	
+	pushr PTR_HIT_ENEMY
+	pushe ENM_LIFE
+	pushc 20
+	subi
+	pushr PTR_HIT_ENEMY
+	pope ENM_LIFE
+	
+	pushr PTR_HIT_ENEMY
+	pushe ENM_LIFE
+	i2str
+	newl
+	printf
+	
+	pushr PTR_HIT_ENEMY
+	pushe ENM_LIFE
+	pushc 0
+	leqi
+	fjmp ink_no_kill
+	
+	pushr PTR_HIT_ENEMY
+	killobj
+	objcreate boss_vivit 0
+.ink_no_kill
+	pushc 0
+	playse
+.ink_no_hit
+	retc RET_KILL
+	
+	
+.pl_bullet_ink
+	popr 1
+	popr 0
+	popr 30
+	popr 29
+	
+	movc SP_DRAW_LAYER 5
+	movc SP_SPRITE_SLOT SLOT_TSURUBAMI
+	movc SP_QUAD_ID TSURUBAMI_BULLET_INK
+	movc SP_COL_A 160
+	
+	pushr ENM_FLAGS
+	pushc EFLAG_PLAYER
+	or
+	pushc EFLAG_NO_TARGETABLE
+	or
+	popr ENM_FLAGS
+	movc HIT_ID 32
+	int ink_bullet_on_hit
+.bull_mov1
+	pushr 29
+	popr ENM_ROLL
+	pushc 1
+	nop
+	
+	pushr 29
+	cos
+	pushr 30
+	mulf
+	pushr 0
+	addf
+	popr 0
+	
+	pushr 29
+	sin
+	pushr 30
+	mulf
+	pushr 1
+	addf
+	popr 1
+	
+	pushr 29
+	pushc 3.14159
+	pushc 180.0
+	divf
+	pushc -0.0
+	mulf
+	addf
+	popr 29
+	
+	
+	pushr 30
+	pushc 1.0
+	addf
+	popr 30
+	
+	jmp bull_mov1
+
+
+.shooter_senri_eye
+	movc SP_DRAW_LAYER 		8
+	movc SP_SPRITE_SLOT 	SLOT_TSURUBAMI
+	movc SP_QUAD_ID 		TSURUBAMI_SENRI_EYE
+	movc ENM_ROLL -1.57089
+	
+	pushr ENM_FLAGS
+	pushc EFLAG_CLIP
+	xor
+	pushc EFLAG_PLAYER
+	or
+	pushc EFLAG_HITBOX
+	xor
+	popr ENM_FLAGS
+	
+.loop_shooter_senri_eye
+	pushr PTR_PARENT
+	pushe ENM_X
+	pushr ENM_GRF0
+	cos
+	pushc 35.0
+	mulf
+	addf
+	popr 0
+	
+	pushr PTR_PARENT
+	pushe ENM_Y
+	pushr ENM_GRF0
+	sin
+	pushc 15.0f
+	mulf
+	addf
+	popr ENM_Y
+	
+	pushs SYS_INPUT
+	pushc INPUT_Z
+	and
+	tcall senri_eye_on_shoot
+	
+	pushc 1
+	nop
+	
+	pushr ENM_GRF0
+	pushc 0.05
+	addf
+	normrad
+	popr ENM_GRF0
+	
+	pushr ENM_GRF0
+	pushc 0
+	leqf
+	fjmp senri_eye_more_0
+	movc SP_DRAW_LAYER 		6
+	jmp senri_eye_continue
+.senri_eye_more_0
+	movc SP_DRAW_LAYER 		8
+.senri_eye_continue
+	jmp loop_shooter_senri_eye
+	
+
+.senri_eye_on_shoot
+	pushr ENM_TIME
+	ftoi
+	pushc 10
+	mod
+	tjmp senri_eye_no_shoot
+	
+	pushc 15.0f
+	pushr ENM_X
+	pushr ENM_Y
+	objcreate pl_bullet_card 0
+.senri_eye_no_shoot
+	ret
+
+.pl_bullet_card
+	popr 1
+	popr 0
+	popr 30
+	
+	movc HIT_ID 32
+	
+	pushr ENM_FLAGS
+	pushc EFLAG_PLAYER
+	or
+	pushc EFLAG_NO_TARGETABLE
+	or
+	popr ENM_FLAGS
+	
+	
+	movc SP_DRAW_LAYER 5
+	movc SP_SPRITE_SLOT SLOT_TSURUBAMI
+	movc SP_QUAD_ID TSURUBAMI_BULLET_CARD
+	movc SP_COL_A 160
+	
+	movc 29 -1.57089
+	
+	int ink_bullet_on_hit
+.senri_eye_bull_mov
+
+	objclosest
+	pushr PTR_ENEMY_NEAREST
+	ownptr
+	eqi
+	tjmp no_found
+	
+	pushr PTR_ENEMY_NEAREST
+	pushe ENM_X
+	pushr ENM_X
+	subf
+	
+	pushr PTR_ENEMY_NEAREST
+	pushe ENM_Y
+	pushr ENM_Y
+	subf
+	
+	atan2f
+	jmp senri_card_angle
+.no_found
+	pushr 29
+.senri_card_angle
+	popr 29
+
+	pushr 29
+	popr ENM_ROLL
+	pushc 1
+	nop
+	
+	pushr 29
+	cos
+	pushr 30
+	mulf
+	pushr 0
+	addf
+	popr 0
+	
+	pushr 29
+	sin
+	pushr 30
+	mulf
+	pushr 1
+	addf
+	popr 1
+	
+	pushr 29
+	pushc 3.14159
+	pushc 180.0
+	divf
+	pushc -0.0
+	mulf
+	addf
+	popr 29
+	
+	
+	pushr 30
+	pushc 1.3
+	addf
+	popr 30
+	
+	jmp senri_eye_bull_mov
+
+
+
+.play_sound
+	pushr ENM_TIME
+	ftoi
+	pushc 4
+	mod
+	tjmp player_no_shoot2
+	
+	pushc 7
+	playse
+	
+	varalloc 2
+	movv 0 -6.0f
+	movv 1 -1.57075f
+	
+	objclosest
+	
+	pushc -1.57089
+	pushv 0
+	pushr 0
+	pushr 1
+	
+	objcreate pl_bullet_ink 0
+	
+	pushc -1.57089
+	pushc -0.18
+	addf
+	pushv 0
+	pushr 0
+	pushc 10.0f
+	addf
+	pushr 1
+	
+	objcreate pl_bullet_ink 0
+	pushc -1.57089
+	pushc 0.18
+	addf
+	pushv 0
+	pushr 0
+	pushc -10.0f
+	addf
+	pushr 1
+	
+	objcreate pl_bullet_ink 0
+	
+	pushc -1.57089
+	pushc 0.3
+	addf
+	pushv 0
+	pushr 0
+	pushc 20.0f
+	addf
+	pushr 1
+	pushc 10.0f
+	addf
+	
+	objcreate pl_bullet_ink 0
+	pushc -1.57089
+	pushc -0.3
+	addf
+	pushv 0
+	pushr 0
+	pushc -20.0f
+	addf
+	pushr 1
+	pushc 10.0f
+	addf
+	
+	objcreate pl_bullet_ink 0
+	
+.player_no_shoot2
+	vardealloc
+	ret
+	
+.play_sound2
+	pushc 2
+	playse
+	ret
+	
+.player_on_hit
+	pushc 4
+	playse
+	delint
+	pushc 30
+	objcreate player_create 0
+	retc RET_KILL
+
+.player_create
+	pushr 11
+	pushc EFLAG_HITBOX
+	xor
+	pushc EFLAG_NO_TARGETABLE
+	or
+	pushc EFLAG_NO_DELETE
+	or
+	popr 11
+	pushc 60
+	nop
+	objcreate player 0
+	retc RET_KILL
+
+.player
+	movc SP_DRAW_LAYER 7
+	movc SP_SPRITE_SLOT SLOT_TSURUBAMI
+	movc SP_QUAD_ID 0
+	
+	objcreate shooter_senri_eye 1
+	popr PTR_CHILD0
+	pushr PTR_CHILD0
+	movce ENM_GRF0 0.0
+	
+	objcreate shooter_senri_eye 1
+	popr PTR_CHILD1
+	pushr PTR_CHILD1
+	movce ENM_GRF0 3.14159
+	
+	objcreate shooter_senri_eye 1
+	popr PTR_CHILD2
+	pushr PTR_CHILD2
+	movce ENM_GRF0 -1.57089
+	
+	objcreate shooter_senri_eye 1
+	popr PTR_CHILD3
+	pushr PTR_CHILD3
+	movce ENM_GRF0 1.57089
+	
+	movc HIT_WIDTH		4.0f
+	movc HIT_HEIGHT		4.0f
+	movc HIT_ID			1
+	
+	pushr 11
+	pushc 4096
+	or
+	pushc 4
+	subi
+	popr 11
+	
+	movc 0 320.0f
+	movc 1 490.0f
+	movc 29 7.0f
+	pushr 0
+	pops 6
+	
+	pushc 3.14159
+	pushc 4.0
+	divf
+	cos
+	popr 30
+	
+	pushr 1
+	pops 7
+	
+	varalloc 1
+	movv 0 40
+.player_spawn
+	pushv 0
+	pushc 0
+	eqi
+	tjmp player_begin
+	
+	pushc 1
+	nop
+	pushr ENM_Y
+	pushc -2.5
+	addf
+	popr ENM_Y
+	pushv 0
+	pushc 1
+	subi
+	popv 0
+	jmp player_spawn
+.player_begin
+	vardealloc
+.player_alive
+	pushr ENM_X
+	pops SYS_PLAYER_X
+	
+	pushr ENM_Y
+	pops SYS_PLAYER_Y
+	call player_check_clip
+	call player_check_begin_hitbox
+	
+	pushc 1
+	nop
+	
+	pushs 2
+	pushc 1
+	and
+	tcall play_sound
+	
+	pushs 2
+	pushc 2
+	and
+	tcall play_sound2
+	pushr 10
+	ftoi
+	pushc 8
+	mod
+	tjmp check_move
+	pushr 47
+	pushc 1
+	addi
+	pushc 4
+	mod
+	popr 47
+.check_move
+	pushs 2
+	pushc 16
+	and
+	tjmp player_move_up
+	
+	pushs 2
+	pushc 32
+	and
+	tjmp player_move_down
+	
+	pushs 2
+	pushc 64
+	and
+	tjmp player_move_left
+	
+	pushs 2
+	pushc 128
+	and
+	tjmp player_move_right
+	
+	jmp player_alive
+.player_move_up
+	pushs 2
+	pushc 64
+	and
+	tjmp player_move_up_left
+	
+	pushs 2
+	pushc 128
+	and
+	tjmp player_move_up_right
+	
+	pushr 1
+	pushr 29
+	subf
+	popr 1
+	jmp player_move_reloop
+.player_move_up_left
+	pushr 0
+	pushr 29
+	pushr 30
+	mulf
+	subf
+	popr 0
+	
+	pushr 1
+	pushr 29
+	pushr 30
+	mulf
+	subf
+	popr 1
+	
+	jmp player_move_reloop
+.player_move_up_right
+	pushr 0
+	pushr 29
+	pushr 30
+	mulf
+	addf
+	popr 0
+	
+	pushr 1
+	pushr 29
+	pushr 30
+	mulf
+	subf
+	popr 1
+	
+	jmp player_move_reloop
+.player_move_down
+	pushs 2
+	pushc 64
+	and
+	tjmp player_move_down_left
+	
+	pushs 2
+	pushc 128
+	and
+	tjmp player_move_down_right
+	
+	pushr 1
+	pushr 29
+	addf
+	popr 1
+	jmp player_move_reloop
+.player_move_down_left
+	pushr 0
+	pushr 29
+	pushr 30
+	mulf
+	subf
+	popr 0
+	
+	pushr 1
+	pushr 29
+	pushr 30
+	mulf
+	addf
+	popr 1
+	
+	jmp player_move_reloop
+.player_move_down_right
+	pushr 0
+	pushr 29
+	pushr 30
+	mulf
+	addf
+	popr 0
+	
+	pushr 1
+	pushr 29
+	pushr 30
+	mulf
+	addf
+	popr 1
+	
+	jmp player_move_reloop
+.player_move_left
+	pushr 0
+	pushr 29
+	subf
+	popr 0
+	jmp player_move_reloop
+.player_move_right
+	pushr 0
+	pushr 29
+	addf
+	popr 0
+.player_move_reloop
+	jmp player_alive
+
+.player_check_clip
+	pushr ENM_X
+	pushc 0.0
+	lessf
+	tjmp player_less_x
+	pushr ENM_X
+	pushc 640.0
+	greatf
+	tjmp player_great_x
+	jmp player_check_y
+.player_less_x
+	movc ENM_X 0.0
+	jmp player_check_y
+.player_great_x
+	movc ENM_X 640.0
+.player_check_y
+	
+	pushr ENM_Y
+	pushc 0.0
+	lessf
+	tjmp player_less_y
+	pushr ENM_Y
+	pushc 480.0
+	greatf
+	tjmp player_great_y
+	jmp player_check_clip_end
+.player_less_y
+	movc ENM_Y 0.0
+	jmp player_check_clip_end
+.player_great_y
+	movc ENM_Y 480.0
+.player_check_clip_end
+	ret
+
+.player_check_begin_hitbox
+	pushr ENM_TIME
+	pushc 180.0
+	greatf
+	fjmp player_no_enable_hit
+	int player_on_hit
+.player_no_enable_hit
+	ret
+
+
+
+
+.background_create
+	movcs GL_CLEAR_R	0.584
+	movcs GL_CLEAR_G	0.604
+	movcs GL_CLEAR_B	0.902
+	objcreate bg_clouds 0
+	objcreate bg_sun_00 0
+	objcreate bg_sun_01 0
+	retc RET_KILL
+
+.bg_sun_00
+	pushr 11
+	pushc EFLAG_CLIP
+	xor
+	pushc EFLAG_HITBOX
+	xor
+	pushc EFLAG_NO_TARGETABLE
+	or
+	pushc EFLAG_NO_DELETE
+	or
+	popr 11
+	movc ENM_X 320.0f
+	movc ENM_Y 60.0f
+	
+	movc SP_DRAW_LAYER		2
+	movc SP_SPRITE_SLOT		SLOT_BG_SUN_00
+	movc SP_QUAD_ID			BG_SUN00
+	movc SP_COL_A			220
+	objcreate bg_sun_ray 1
+	popr PTR_CHILD0
+	pushr PTR_CHILD0
+	movce ENM_GRF0 0.0004
+	pushr PTR_CHILD0
+	movce ENM_SPRITE_SCALE_X -1.0
+.sun00_loop
+	pushr ENM_ROLL
+	pushc 0.0001
+	addf
+	popr ENM_ROLL
+	pushc 1
+	nop
+	jmp sun00_loop
+
+.bg_sun_01
+	pushr 11
+	pushc EFLAG_CLIP
+	xor
+	pushc EFLAG_HITBOX
+	xor
+	pushc EFLAG_NO_TARGETABLE
+	or
+	pushc EFLAG_NO_DELETE
+	or
+	popr 11
+	movc ENM_X 320.0f
+	movc ENM_Y 60.0f
+	movc SP_DRAW_LAYER		2
+	movc SP_SPRITE_SLOT		SLOT_BG_SUN_01
+	movc SP_QUAD_ID			BG_SUN01
+	movc SP_COL_A			200
+	objcreate bg_sun_ray 1
+	popr PTR_CHILD0
+	pushr PTR_CHILD0
+	movce ENM_GRF0 -0.0007
+	pushr PTR_CHILD0
+	movce ENM_SPRITE_SCALE_X 1.0
+.sun01_loop
+	pushr ENM_ROLL
+	pushc 0.009
+	subf
+	popr ENM_ROLL
+	pushc 1
+	nop
+	jmp sun01_loop
+
+.bg_sun_ray
+	pushr 11
+	pushc EFLAG_CLIP
+	xor
+	pushc EFLAG_HITBOX
+	xor
+	pushc EFLAG_NO_TARGETABLE
+	or
+	pushc EFLAG_NO_DELETE
+	or
+	popr 11
+	movc ENM_X 320.0f
+	movc ENM_Y 60.0f
+	movc SP_DRAW_LAYER		2
+	movc SP_SPRITE_SLOT		SLOT_BG_SUN_RAY
+	movc SP_QUAD_ID			BG_SUN_RAY
+	movc SP_COL_A			200
+	
+.bg_sun_ray_loop
+	
+	movc ENM_SPRITE_SCALE_Y 4.0
+	movc ENM_SPRITE_SCALE_X 4.0
+	pushr ENM_ROLL
+	pushr ENM_GRF0
+	addf
+	popr ENM_ROLL
+	pushc 1
+	nop
+	jmp bg_sun_ray_loop
+	
+.bg_clouds
+	pushr 11
+	pushc EFLAG_CLIP
+	xor
+	pushc EFLAG_HITBOX
+	xor
+	pushc EFLAG_NO_TARGETABLE
+	or
+	pushc EFLAG_NO_DELETE
+	or
+	popr 11
+	movc ENM_X 320.0f
+	movc ENM_Y 240.0f
+	movc SP_DRAW_LAYER		0
+	movc SP_SPRITE_SLOT		SLOT_BG_STAGE
+	movc SP_QUAD_ID			BG_STAGE
+.bg_stage_loop
+	pushc 1
+	nop
+	jmp bg_stage_loop
+
+.cam_move	
+	movc 0 320.0
+	movc 1 0.0
+	movc 30 1.0
+	movc 29 0.0
+	pushr 11
+	pushc EFLAG_HITBOX
+	xor
+	pushc EFLAG_NO_TARGETABLE
+	or
+	pushc EFLAG_NO_DELETE
+	or
+	popr 11
+.wait_key
+	pushs SYS_INPUT
+	pushc INPUT_X
+	and
+	tjmp cam_move_begin
+	pushc 1
+	nop
+	jmp wait_key
+.cam_move_begin
+	movc 29 0.0
+.cam_move_loop
+	pushc 3.14159
+	pushc 180.0
+	divf
+	pushr 29
+	mulf
+	pops 59
+	
+	pushc 1
+	nop
+	pushr 29
+	pushc 3.0
+	addf
+	popr 29
+	
+	pushr 29
+	pushc 180.0
+	geqf
+	tjmp trans1
+	jmp cam_move_loop
+.trans1
+	movc 29 180.0
+	movcs 59 3.14159
+	pushc 60
+	nop
+.cam_move_loop2
+	pushc 3.14159
+	pushc 180.0
+	divf
+	pushr 29
+	mulf
+	pops 59
+	
+	pushc 1
+	nop
+	pushr 29
+	pushc 3.0
+	addf
+	popr 29
+	
+	pushr 29
+	pushc 360.0
+	geqf
+	tjmp trans2
+	jmp cam_move_loop2
+.trans2
+	movcs 59 0.0
+	pushc 60
+	nop
+	jmp cam_move_begin
+	

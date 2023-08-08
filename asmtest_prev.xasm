@@ -1,0 +1,279 @@
+sound "resource/LE/sub_event_00.wav", 
+		"resource/LE/sub_event_01.wav", 
+		"resource/LE/sub_event_02.wav", 
+		"resource/LE/sub_event_03.wav", 
+		"resource/LE/slot_00.wav", 
+		"resource/LE/slot_01.wav", 
+		"resource/LE/cell_move_00.wav";
+		
+music "resource/BOSS_Xeno_a.ogg" 0 1000000000,
+		"resource/bgm/ee_tsurubami.wav" 0 500000000,
+		"resource/bgm/th14_12.wav" 0 900000000;
+	
+model "yukari_stage.obj";
+
+quad "resource/test.spr", 
+		"resource/bg.spr", 
+		"resource/Tsurubami.spr", 
+		"resource/bullet003.spr";
+		
+shader2d "resource/shaders/def_2.vert" "resource/shaders/def_2.frag";
+shader3d "resource/shaders/def_3d.vert" "resource/shaders/def_3d.frag";
+
+string "Hello ", "Everynyan! ", "How are you? I'm fine, thank you!", "Angle: ";
+
+.subrs
+	enmcreate player 0
+	movcs 59 0.0
+	pushc 60
+	nop
+	pushc 2
+	playmusic  
+	pushc 2
+	pushc 30.0
+	setvolume
+	enmcreate subr2 0
+	enmcreate cam_move 0
+.loop
+	pushr 9
+	pushc 4.0f
+	addf
+	popr 9
+	pushc 1
+	nop
+	jmp loop
+	
+.subr2
+	movc 45 5
+	movc 46 2
+	movc 47 1
+	movc 0 320.0f
+	movc 1 0.0f
+	movc 19 0.0f
+	movc 20 240.f
+	pushr 11
+	pushc 8
+	subi
+	popr 11
+	int randmov
+.loop2
+	
+	pushr 19
+	sin
+	pushr 20
+	mulf
+	addf
+	popr 1
+	
+	pushr 19
+	pushc 3.14159
+	pushc 1.0
+	mulf
+	pushc 180.0
+	divf
+	addf
+	popr 19
+	
+	pushc 1
+	nop 
+	pushr 19
+	pushc 3.14159
+	pushc 100.0
+	mulf
+	pushc 180.0f
+	divf
+	geqf
+	tjmp out1
+	jmp loop2
+.out1
+	pushc 1
+	nop
+	jmp out1
+	
+.randmov
+	movc 10 0
+	randf
+	pushc 200.0f
+	mulf
+	pushc 400.0f
+	addf
+	popr 0
+	randf
+	pushc 100.0f
+	mulf
+	pushc 200.0f
+	addf
+	popr 1
+	movc 30 0.0
+.waiting
+	pushc 1
+	nop
+	movc 13 12
+	pushc 6.28318
+	pushr 13
+	itof
+	divf
+	popr 29
+.loop_bullet0
+	pushr 13
+	pushc 1
+	subi
+	popr 13
+	
+	pushr 29
+	pushr 13
+	itof
+	mulf
+	pushr 30
+	addf
+	
+	pushc 5.5f
+	pushr 0
+	pushr 1
+	enmcreate bullet_003 0
+	
+	
+	pushr 13
+	pushc 0
+	eqi
+	fjmp loop_bullet0
+	
+	pushr 30
+	pushc 3.14159
+	pushc 180.0
+	divf
+	pushc 13.0
+	mulf
+	addf
+	popr 30
+	
+	pushr 10
+	pushc 10
+	mod
+	pushc 0
+	eqi
+	tjmp randmov
+	jmp waiting
+	
+.bullet_003
+	popr 1
+	popr 0
+	popr 30
+	popr 29
+	movc 45 7
+	movc 46 3
+	movc 47 1
+.bull_mov0
+	pushc 1
+	nop
+	
+	pushr 29
+	cos
+	pushr 30
+	mulf
+	pushr 0
+	addf
+	popr 0
+	
+	pushr 29
+	sin
+	pushr 30
+	mulf
+	pushr 1
+	addf
+	popr 1
+	
+	pushr 29
+	pushc 3.14159
+	pushc 180.0
+	divf
+	pushc -0.75
+	mulf
+	addf
+	popr 29
+	
+	jmp bull_mov0
+
+.player
+	pushr 11
+	pushc 2147483648
+	or
+	popr 11
+	movc 0 320.0f
+	movc 1 240.0f
+	pushr 0
+	pops 6
+	pushr 1
+	pops 7
+.player_alive
+	pushc 1
+	nop
+	jmp player_alive
+
+.cam_move
+	movc 0 320.0
+	movc 1 240.0
+	movc 30 1.0
+	movc 29 0.0
+.wait_key
+	pushc 1
+	nop
+	pushs 2
+	pushc 1
+	and
+	tjmp cam_move_begin
+	jmp wait_key
+.cam_move_begin
+	retc 0
+	movc 29 0.0
+.cam_move_loop
+	pushc 3.14159
+	pushc 180.0
+	divf
+	pushr 29
+	mulf
+	pops 59
+	
+	pushc 1
+	nop
+	pushr 29
+	pushc 3.0
+	addf
+	popr 29
+	
+	pushr 29
+	pushc 180.0
+	geqf
+	tjmp trans1
+	jmp cam_move_loop
+.trans1
+	movc 29 180.0
+	movcs 59 3.14159
+	pushc 60
+	nop
+.cam_move_loop2
+	pushc 3.14159
+	pushc 180.0
+	divf
+	pushr 29
+	mulf
+	pops 59
+	
+	pushc 1
+	nop
+	pushr 29
+	pushc 3.0
+	addf
+	popr 29
+	
+	pushr 29
+	pushc 360.0
+	geqf
+	tjmp trans2
+	jmp cam_move_loop2
+.trans2
+	movcs 59 0.0
+	pushc 60
+	nop
+	jmp cam_move_begin
+	

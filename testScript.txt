@@ -1,0 +1,28 @@
+
+function Sub0 () {
+	if(a > 0){
+	
+	
+	}
+
+
+
+
+	for(){
+	}
+
+	if(){
+	}
+
+	while(){
+	}
+	
+	switch(){
+	}
+
+	else{
+	}
+}
+
+function func(){
+}
