@@ -81,6 +81,9 @@ Lexer::Lexer() {
 		{"randf", ScriptCommand::RANDF},
 		{"randang", ScriptCommand::RANDANG},
 
+		{"absi", ScriptCommand::ABSI},
+		{"absf", ScriptCommand::ABSF},
+
 		//System
 		{"nop", ScriptCommand::NOP},
 		{"jmp", ScriptCommand::JMP},
@@ -99,6 +102,7 @@ Lexer::Lexer() {
 		{"vardealloc", ScriptCommand::VARDEALLOC},
 		{"objcreate", ScriptCommand::OBJCREATE},
 		{"objclosest", ScriptCommand::OBJCLOSEST},
+		{"objexist", ScriptCommand::OBJEXIST},
 		{"delint", ScriptCommand::DELINTERRUPT},
 		{"killobj", ScriptCommand::KILLOBJ},
 		{"intret", ScriptCommand::INTRET},
@@ -120,6 +124,12 @@ Lexer::Lexer() {
 		{"addvolume", ScriptCommand::ADDVOLUME},
 		{"setvolume", ScriptCommand::SETVOLUME},
 		{"playse", ScriptCommand::PLAYSOUND},
+		{"musoffset", ScriptCommand::SETPLAYOFFSET},
+		{"playsel", ScriptCommand::PLAYSOUNDLOOP},
+		{"stopsel", ScriptCommand::STOPSOUNDLOOP},
+		{"playseo", ScriptCommand::PLAYSOUNDOFFSET},
+		{"isplayingse", ScriptCommand::LASTSOUNDPLAYING},
+		{"isplayingall", ScriptCommand::ALLSOUNDPLAYING},
 
 		//String
 		{"pushstr", ScriptCommand::PUSHSTR},
